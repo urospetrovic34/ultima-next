@@ -6,7 +6,6 @@ import NavigationHeaderPrimary from "@/components/navigation/header/Primary";
 import NavigationHeaderSecondary from "@/components/navigation/header/Secondary";
 import NavigationFooter from "@/components/navigation/Footer";
 import { cookies } from "next/headers";
-import { useStore } from "../lib/store/zustand";
 import StoreInitializer from "@/components/StoreInitializer";
 
 export const metadata: Metadata = {
@@ -14,7 +13,13 @@ export const metadata: Metadata = {
 };
 
 async function getUser() {
-  const res = await fetch("http://localhost:3001/api/auth/user");
+  const res = await fetch(`${process.env.API_URL}/auth/v1/user`, {
+    method: "GET",
+    headers: {
+      apiKey: process.env.API_KEY as string,
+      Authorization: `Bearer ${cookies().get("access_token")?.value}` as string,
+    },
+  });
   return res.json();
 }
 
