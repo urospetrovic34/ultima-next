@@ -13,7 +13,7 @@ const AuthCart = ({ user }: AuthCartProps) => {
   const router = useRouter();
 
   const handleSignout = async () => {
-    await fetch("http://localhost:3001/api/auth/signout", {
+    await fetch("/api/auth/signout", {
       method: "POST",
     });
     router.refresh();
