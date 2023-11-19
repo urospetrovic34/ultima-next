@@ -5,7 +5,7 @@ const Secondary = () => {
     <nav className="bg-secondary border-b border-primary">
       <div className="max-w-screen-xl flex items-center justify-between py-5 mx-auto">
         <div className="leading-5">
-          <Link className="hover:bg-primary py-5 px-3 cursor-pointer" href="/">
+          <Link className="hover:bg-primary py-5 px-3 cursor-pointer" href="/shop">
             Fabric
           </Link>
         </div>

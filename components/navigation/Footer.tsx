@@ -12,7 +12,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-accent">
+    <footer className="bg-primary">
       <div className="w-full mx-auto max-w-screen-xl flex justify-between py-6">
         <div className="flex flex-col justify-between">
           <div

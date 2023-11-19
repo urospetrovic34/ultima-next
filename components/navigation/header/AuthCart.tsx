@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import IconShoppingCart from "@/components/icon/ShoppingCart";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 type AuthCartProps = {
   user: any;
@@ -17,6 +17,7 @@ const AuthCart = ({ user }: AuthCartProps) => {
       method: "POST",
     });
     router.refresh();
+    redirect("/");
   };
 
   return (
