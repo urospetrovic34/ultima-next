@@ -19,10 +19,6 @@ const Card = ({ image, category, name, slug }: CardProps) => {
           width={300}
           height={300}
           alt="čmar"
-          style={{
-            height: "300px",
-            objectFit: "cover",
-          }}
         />
         <div className="bg-primary p-3">
           <p className="capitalize text-lg">{category}</p>
