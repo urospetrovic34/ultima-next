@@ -18,7 +18,7 @@ const Card = ({ image, category, name, slug }: CardProps) => {
           <Image
             src={image}
             fill
-            sizes="10vw"
+            sizes="100vw"
             alt={slug}
             style={{ objectFit: "cover" }}
           />
