@@ -12,14 +12,17 @@ type CardProps = {
 
 const Card = ({ image, category, name, slug }: CardProps) => {
   return (
-    <div className="flex flex-col cursor-pointer">
+    <div className="flex flex-col cursor-pointer w-[300px]">
       <Link href={{ pathname: `/${category}/${slug}` }}>
-        <Image
-          src={image}
-          width={300}
-          height={300}
-          alt="čmar"
-        />
+        <div className="relative h-[300px]">
+          <Image
+            src={image}
+            fill
+            sizes="100vw"
+            alt={slug}
+            style={{ objectFit: "cover" }}
+          />
+        </div>
         <div className="bg-primary p-3">
           <p className="capitalize text-lg">{category}</p>
           <p>{name}</p>

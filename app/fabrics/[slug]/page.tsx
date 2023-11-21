@@ -28,8 +28,8 @@ export default async function Fabric({ params }: { params: { slug: string } }) {
         height={400}
         alt={productData[0].slug}
         style={{
+          maxWidth: "100%",
           height: "400px",
-          objectFit: "cover",
         }}
       />
       <ProductOptions name={productData[0].name} price={productData[0].price} />
