@@ -12,6 +12,7 @@ async function getProducts(page: string | undefined) {
         Range: page === "1" ? "0-8" : page === "2" ? "9-17" : "0-8",
         Prefer: "count=exact",
       },
+      next: { tags: ["products"] },
     }
   );
 
