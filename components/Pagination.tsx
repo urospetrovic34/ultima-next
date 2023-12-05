@@ -10,7 +10,6 @@ const Pagination = ({ count }: PaginationProps) => {
     <div className="flex justify-center gap-1">
       <Link
         className="w-[40px] h-[40px]"
-        scroll
         href={{ pathname: "/shop", query: { page: "1" } }}
       >
         <ReusableButton text="<" rounded={true} />
@@ -20,7 +19,6 @@ const Pagination = ({ count }: PaginationProps) => {
           <Link
             key={index}
             className="w-[40px] h-[40px]"
-            scroll
             href={{
               pathname: "/shop",
               query: { page: (index + 1).toString() },
@@ -36,7 +34,6 @@ const Pagination = ({ count }: PaginationProps) => {
       })}
       <Link
         className="w-[40px] h-[40px]"
-        scroll
         href={{ pathname: "/shop", query: { page: "1" } }}
       >
         <ReusableButton text=">" rounded={true} />

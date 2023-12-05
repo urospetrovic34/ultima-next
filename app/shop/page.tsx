@@ -1,4 +1,6 @@
 import ProductList from "@/components/product/List";
+import { revalidateTag } from "next/cache";
+import pagination from "@/lib/utils/pagination";
 
 async function getProducts(page: string | undefined) {
   const res = await fetch(
@@ -8,13 +10,14 @@ async function getProducts(page: string | undefined) {
       headers: {
         apiKey: process.env.API_KEY as string,
         Authorization: `Bearer ${process.env.API_KEY}` as string,
-        // Hardcoded because it was like 00:40 AM by this point
-        Range: page === "1" ? "0-8" : page === "2" ? "9-17" : "0-8",
+        Range: pagination(Number(page)),
         Prefer: "count=exact",
       },
+      cache: "no-store",
       next: { tags: ["products"] },
     }
   );
+  revalidateTag("products");
 
   const data = await res.json();
 

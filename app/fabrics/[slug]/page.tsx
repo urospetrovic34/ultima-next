@@ -27,10 +27,9 @@ export default async function Fabric({ params }: { params: { slug: string } }) {
         width={400}
         height={400}
         alt={productData[0].slug}
-        style={{
-          maxWidth: "100%",
-          height: "400px",
-        }}
+        placeholder="blur"
+        blurDataURL={productData[0].image}
+        className="group-hover:opacity-75"
       />
       <ProductOptions name={productData[0].name} price={productData[0].price} />
     </div>
