@@ -3,6 +3,10 @@ import { revalidateTag } from "next/cache";
 import pagination from "@/lib/utils/pagination";
 
 async function getProducts(page: string | undefined) {
+  if (page) {
+    revalidateTag("product");
+  }
+
   const res = await fetch(
     `${process.env.API_URL}/rest/v1/product?select=*,product_category(name)`,
     {
@@ -13,11 +17,9 @@ async function getProducts(page: string | undefined) {
         Range: pagination(Number(page)),
         Prefer: "count=exact",
       },
-      cache: "no-store",
       next: { tags: ["products"] },
     }
   );
-  revalidateTag("products");
 
   const data = await res.json();
 
