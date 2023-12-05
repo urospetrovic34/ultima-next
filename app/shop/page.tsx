@@ -1,6 +1,7 @@
 import ProductList from "@/components/product/List";
 import { revalidateTag } from "next/cache";
 import pagination from "@/lib/utils/pagination";
+import { Suspense } from "react";
 
 async function getProducts(page: string | undefined) {
   if (page) {
@@ -17,7 +18,7 @@ async function getProducts(page: string | undefined) {
         Range: pagination(Number(page)),
         Prefer: "count=exact",
       },
-      next: { tags: ["products"], revalidate: 3 },
+      next: { tags: ["products"] },
     }
   );
 
@@ -40,10 +41,12 @@ export default async function Shop({
   const productData = await getProducts(searchParams.page?.toString());
   return (
     <div className="flex justify-center items-center my-20">
-      <ProductList
-        products={productData.data}
-        pagination={productData.pagination}
-      />
+      <Suspense fallback={<p>Loading feed...</p>}>
+        <ProductList
+          products={productData.data}
+          pagination={productData.pagination}
+        />
+      </Suspense>
     </div>
   );
 }
