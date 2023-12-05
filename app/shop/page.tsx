@@ -18,7 +18,7 @@ async function getProducts(page: string | undefined) {
         Range: pagination(Number(page)),
         Prefer: "count=exact",
       },
-      next: { tags: ["products"] },
+      cache: "no-store",
     }
   );
 
@@ -41,12 +41,10 @@ export default async function Shop({
   const productData = await getProducts(searchParams.page?.toString());
   return (
     <div className="flex justify-center items-center my-20">
-      <Suspense fallback={<p>Loading feed...</p>}>
-        <ProductList
-          products={productData.data}
-          pagination={productData.pagination}
-        />
-      </Suspense>
+      <ProductList
+        products={productData.data}
+        pagination={productData.pagination}
+      />
     </div>
   );
 }
