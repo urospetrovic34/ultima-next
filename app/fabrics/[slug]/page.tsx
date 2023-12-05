@@ -1,10 +1,6 @@
-import Image from "next/image";
-
-import ProductOptions from "@/components/product/Options";
-import { headers } from "next/headers";
+import ProductSingleDisplay from "@/components/product/SingleDisplay";
 
 async function getProduct(slug: string) {
-  const heads = headers();
   const res = await fetch(
     `${process.env.API_URL}/rest/v1/product?slug=eq.${slug}&select=*,product_category(name)`,
     {
@@ -13,6 +9,7 @@ async function getProduct(slug: string) {
         apiKey: process.env.API_KEY as string,
         Authorization: `Bearer ${process.env.API_KEY}` as string,
       },
+      next: { revalidate: 3600 },
     }
   );
   return res.json();
@@ -21,18 +18,11 @@ async function getProduct(slug: string) {
 export default async function Fabric({ params }: { params: { slug: string } }) {
   const productData = await getProduct(params.slug);
   return (
-    <div className="flex justify-center my-20 gap-5">
-      <Image
-        src={productData[0].image}
-        width={400}
-        height={400}
-        alt={productData[0].slug}
-        style={{
-          maxWidth: "100%",
-          height: "400px",
-        }}
-      />
-      <ProductOptions name={productData[0].name} price={productData[0].price} />
-    </div>
+    <ProductSingleDisplay
+      image={productData[0].image}
+      alt={productData[0].slug}
+      name={productData[0].name}
+      price={productData[0].price}
+    />
   );
 }
