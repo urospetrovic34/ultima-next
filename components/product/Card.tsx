@@ -17,8 +17,8 @@ const Card = ({ image, category, name, slug }: CardProps) => {
         <div className="relative h-[300px] overflow-hidden">
           <Image
             src={image}
-            width={300}
-            height={300}
+            width={400}
+            height={400}
             alt={slug}
             style={{
               maxWidth: "100%",
