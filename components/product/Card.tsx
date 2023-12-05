@@ -17,10 +17,12 @@ const Card = ({ image, category, name, slug }: CardProps) => {
         <div className="relative h-[300px] overflow-hidden">
           <Image
             src={image}
-            fill
-            sizes="(max-width: 768px) 50vw, 33vw"
+            width={300}
+            height={300}
             alt={slug}
             style={{
+              maxWidth: "100%",
+              height: "400px",
               objectFit: "cover",
             }}
             className="hover:scale-105 transition-[transform] duration-500"
