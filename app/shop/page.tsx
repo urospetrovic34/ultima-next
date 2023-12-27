@@ -1,7 +1,5 @@
 import ProductList from "@/components/product/List";
-import { revalidateTag } from "next/cache";
 import pagination from "@/lib/utils/pagination";
-import { Suspense } from "react";
 
 async function getProducts(page: string | undefined) {
   const res = await fetch(

@@ -14,17 +14,14 @@ const Card = ({ image, category, name, slug }: CardProps) => {
   return (
     <div className="flex flex-col cursor-pointer w-[300px]">
       <Link href={{ pathname: `/${category}/${slug}` }}>
-        <div className="relative h-[300px] overflow-hidden">
+        <div className="overflow-hidden">
           <Image
             src={image}
-            width={400}
-            height={400}
             alt={slug}
-            style={{
-              maxWidth: "100%",
-              height: "400px",
-              objectFit: "cover",
-            }}
+            sizes="(max-width: 768px) 150px, (max-width: 992px) 300px"
+            height={0}
+            width={0}
+            style={{ width: "300px", height: "300px", objectFit: "cover" }}
             className="hover:scale-105 transition-[transform] duration-500"
           />
         </div>
