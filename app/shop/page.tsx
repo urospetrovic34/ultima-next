@@ -12,7 +12,7 @@ async function getProducts(page: string | undefined) {
         Range: pagination(Number(page)),
         Prefer: "count=exact",
       },
-      next: { revalidate: 3600, tags: [`products-page-${page}`] },
+      next: { tags: [`products-page-${page}`] },
     }
   );
 
