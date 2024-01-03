@@ -18,7 +18,7 @@ const Card = ({ image, category, name, slug }: CardProps) => {
           <Image
             src={image}
             alt={slug}
-            // key={slug}
+            key={slug}
             sizes="(max-width: 768px) 150px, (max-width: 992px) 300px"
             height={0}
             width={0}
