@@ -18,12 +18,12 @@ const Card = ({ image, category, name, slug }: CardProps) => {
           <Image
             src={image}
             alt={slug}
+            key={slug}
             sizes="(max-width: 768px) 150px, (max-width: 992px) 300px"
             height={0}
             width={0}
             style={{ width: "300px", height: "300px", objectFit: "cover" }}
             className="hover:scale-105 transition-[transform] duration-500"
-            priority
           />
         </div>
         <div className="bg-primary p-3">
