@@ -1,7 +1,7 @@
 import ProductList from "@/components/product/List";
 import pagination from "@/lib/utils/pagination";
 
-async function getProducts(page: number) {
+async function getProducts() {
   const res = await fetch(
     `${process.env.API_URL}/rest/v1/product?select=*,product_category(name)`,
     {
@@ -9,10 +9,10 @@ async function getProducts(page: number) {
       headers: {
         apiKey: process.env.API_KEY as string,
         Authorization: `Bearer ${process.env.API_KEY}` as string,
-        Range: pagination(page),
+        // Range: pagination(page),
         Prefer: "count=exact",
       },
-      next: { tags: [`products-page-${page}`] },
+      // next: { tags: [`products-page-${page}`] },
     }
   );
 
@@ -34,7 +34,7 @@ export default async function Shop({
 }) {
   const { page } = searchParams;
   const pageNumber = page ? Number(page) : 1;
-  const productData = await getProducts(pageNumber);
+  const productData = await getProducts();
   return (
     <div className="flex justify-center items-center my-20">
       <ProductList

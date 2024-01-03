@@ -21,7 +21,7 @@ const List = ({ products, pagination }: InputProps) => {
           </div>
         ))}
       </div>
-      <Pagination count={Math.ceil(pagination.total / 9)} />
+      {/* <Pagination count={Math.ceil(pagination.total / 9)} /> */}
     </div>
   );
 };
