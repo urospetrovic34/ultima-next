@@ -3,10 +3,10 @@ import Pagination from "@/components/Pagination";
 
 interface InputProps {
   products: any[];
-  pagination: any;
+  // pagination: any;
 }
 
-const List = ({ products, pagination }: InputProps) => {
+const List = ({ products }: InputProps) => {
   return (
     <div className="flex flex-col">
       <div className="grid grid-cols-3 gap-4 mb-5">
